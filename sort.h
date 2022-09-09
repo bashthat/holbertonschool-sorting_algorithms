@@ -3,6 +3,15 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <sys/time.h>
+#include <sys/resource.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdarg.h>
 
 /**
  * struct listint_s - Doubly linked list node
@@ -24,11 +33,8 @@ void print_list(const listint_t *list);
 /* Task Functions */
 void merge_sort(int *array, size_t size);
 void merge(int *array, int *left, int *right, size_t size);
+/* heap sort functions */
+void heap_sort(int *array, size_t size);
 
 
-
-
-
-
-
-endif /* MAIN_H */
+#endif
