@@ -5,22 +5,52 @@
  * @array: array to sort
  * @size: size of array
  */
-
+// You must implement the sift-down heap sort algorithm
+// You’re expected to print the array after each time you swap two elements
 void heap_sort(int *array, size_t size)
 {
-    size_t i;
-    int tmp;
-
+    size_t i, j, k, l;
+    int temp;
     if (array == NULL || size < 2)
         return;
     for (i = size / 2; i > 0; i--)
-        heapify(array, size, i - 1, size);
-    for (i = size - 1; i > 0; i--)
     {
-        tmp = array[0];
-        array[0] = array[i];
-        array[i] = tmp;
+        for (j = i; j <= size / 2;)
+        {
+            k = j * 2;
+            if (k < size && array[k - 1] < array[k])
+                k++;
+            if (array[j - 1] < array[k - 1])
+            {
+                temp = array[j - 1];
+                array[j - 1] = array[k - 1];
+                array[k - 1] = temp;
+                j = k;
+            }
+            else
+                break;
+        }
+    }
+    for (l = size; l > 1; l--)
+    {
+        temp = array[0];
+        array[0] = array[l - 1];
+        array[l - 1] = temp;
         print_array(array, size);
-        heapify(array, i, 0, size);
+        for (j = 1; j <= l / 2;)
+        {
+            k = j * 2;
+            if (k < l && array[k - 1] < array[k])
+                k++;
+            if (array[j - 1] < array[k - 1])
+            {
+                temp = array[j - 1];
+                array[j - 1] = array[k - 1];
+                array[k - 1] = temp;
+                j = k;
+            }
+            else
+                break;
+        }
     }
 }
