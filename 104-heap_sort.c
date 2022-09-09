@@ -5,8 +5,7 @@
  * @array: array to sort
  * @size: size of array
  */
-// You must implement the sift-down heap sort algorithm
-// You’re expected to print the array after each time you swap two elements
+
 void heap_sort(int *array, size_t size)
 {
     size_t i, j, k, l;
