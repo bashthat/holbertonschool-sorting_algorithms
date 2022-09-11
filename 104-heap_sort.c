@@ -1,55 +1,78 @@
 #include "sort.h"
 /**
- * heap_sort - sorts an array of integers in ascending order using the Heap sort
- * algorithm
+ * sort - sorts an array of integers in ascending order
+ * @a: array to sort
+ * @b: size of array
+ */
+
+
+void sort(int *a, int b)
+{
+    int c, d, e, f;
+
+    for (c = b / 2 - 1; c >= 0; c--)
+        heapify(a, b, c);
+
+    for (d = b - 1; d >= 0; d--)
+    {
+        exchange(&a[0], &a[d]);
+        heapify(a, d, 0);
+    }
+}
+
+
+/**
+ * exchange - exchanges two values
+ * @x: first value
+ * @y: second value
+ */
+
+void exchange(int *x, int *y)
+{
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+/**
+ * heapify - heapifies an array
+ * @a: array to heapify
+ * @b: size of array
+ * @c: index of array
+ */
+
+void heapify(int *a, int b, int c)
+{
+    int d = c;
+    int e = 2 * c + 1;
+    int f = 2 * c + 2;
+
+    if (e < b && a[e] > a[d])
+        d = e;
+
+    if (f < b && a[f] > a[d])
+        d = f;
+
+    if (d != c)
+    {
+        exchange(&a[c], &a[d]);
+        heapify(a, b, d);
+    }
+}
+
+/**
+ * heap_sort - sorts an array of integers in ascending order
  * @array: array to sort
  * @size: size of array
  */
 
 void heap_sort(int *array, size_t size)
 {
-    size_t i, j, k, l;
-    int temp;
+    int a, b, c, d, e, f;
+
     if (array == NULL || size < 2)
         return;
-    for (i = size / 2; i > 0; i--)
-    {
-        for (j = i; j <= size / 2;)
-        {
-            k = j * 2;
-            if (k < size && array[k - 1] < array[k])
-                k++;
-            if (array[j - 1] < array[k - 1])
-            {
-                temp = array[j - 1];
-                array[j - 1] = array[k - 1];
-                array[k - 1] = temp;
-                j = k;
-            }
-            else
-                break;
-        }
-    }
-    for (l = size; l > 1; l--)
-    {
-        temp = array[0];
-        array[0] = array[l - 1];
-        array[l - 1] = temp;
-        print_array(array, size);
-        for (j = 1; j <= l / 2;)
-        {
-            k = j * 2;
-            if (k < l && array[k - 1] < array[k])
-                k++;
-            if (array[j - 1] < array[k - 1])
-            {
-                temp = array[j - 1];
-                array[j - 1] = array[k - 1];
-                array[k - 1] = temp;
-                j = k;
-            }
-            else
-                break;
-        }
-    }
+
+    sort(array, size);
+    print_array(array, size);
 }
