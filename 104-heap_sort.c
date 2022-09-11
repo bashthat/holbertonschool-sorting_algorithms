@@ -80,7 +80,7 @@ void heap_sort(int *array, size_t size)
 
 	for (xyz = x - 1; xyz > 0; xyz--)
 	{
-		swap(&array[0], &array[xyz]);
+		exchange(&array[0], &array[xyz]);
 		x--;
 		heapify(array, x, 0);
 	}
