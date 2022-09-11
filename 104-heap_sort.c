@@ -8,17 +8,22 @@
 
 void sort(int *a, int b)
 {
-    int c, d, e, f;
+    int x, y;
+    int z;
 
-    for (c = b / 2 - 1; c >= 0; c--)
-        heapify(a, b, c);
-
-    for (d = b - 1; d >= 0; d--)
+    for (x = 0; x < b; x++)
     {
-        exchange(&a[0], &a[d]);
-        heapify(a, d, 0);
+        for (y = 0; y < b - x - 1; y++)
+        {
+            if (a[y] > a[y + 1])
+            {
+                exchange(&a[y], &a[y + 1]);
+                print_array(a, b);
+            }
+        }
     }
-}
+        }
+
 
 
 /**
@@ -43,36 +48,40 @@ void exchange(int *x, int *y)
 
 void heapify(int *a, int b, int c)
 {
-    int d = c;
-    int e = 2 * c + 1;
-    int f = 2 * c + 2;
+    size_t largest = c;
+    size_t left = 2 * c + 1;
+    size_t right = 2 * c + 2;
 
-    if (e < b && a[e] > a[d])
-        d = e;
-
-    if (f < b && a[f] > a[d])
-        d = f;
-
-    if (d != c)
+    if (left < b && a[left] > a[largest])
+        largest = left;
+    if (right < b && a[right] > a[largest])
+        largest = right;
+    if (largest != c)
     {
-        exchange(&a[c], &a[d]);
-        heapify(a, b, d);
+        exchange(&a[c], &a[largest]);
+        print_array(a, b);
+        heapify(a, b, largest);
     }
 }
-
 /**
  * heap_sort - sorts an array of integers in ascending order
  * @array: array to sort
  * @size: size of array
  */
 
-void heap_sort(int *array, size_t size)
-{
-    int a, b, c, d, e, f;
+void heap_sort(int *array, size_t size) {
+    int z;
+    size_t i = size;
 
-    if (array == NULL || size < 2)
-        return;
+    for (z = size / 2 - 1; z >= 0; z--)
+    {
+        heapify(array, size, z);
+    }
 
-    sort(array, size);
-    print_array(array, size);
+    for (z = size - 1; z >= 0; z--)
+    {
+        exchange(&array[0], &array[z]);
+        print_array(array, size);
+        heapify(array, z, 0);
+    }
 }
