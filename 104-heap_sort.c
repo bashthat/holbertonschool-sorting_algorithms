@@ -11,9 +11,9 @@ size_t i, j, k, l;
 int temp;
 if (array == NULL || size < 2)
 return;
-for (i = size; i > 0; i--)
+for (i = size / 2; i > 0; i--)
 {
-for (j = i; j <= size;)
+for (j = i; j <= size / 2;)
 {
 k = j * 2;
 if (k < size && array[k - 1] < array[k])
@@ -35,7 +35,7 @@ temp = array[0];
 array[0] = array[l - 1];
 array[l - 1] = temp;
 print_array(array, size);
-for (j = 1; j <= l;)
+for (j = 1; j <= l / 2;)
 {
 k = j * 2;
 if (k < l && array[k - 1] < array[k])
