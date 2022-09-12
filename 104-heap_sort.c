@@ -13,7 +13,8 @@ if (array == NULL || size < 2)
 return;
 for (i = size / 2; i > 0; i--)
 {
-for (j = i; j <= size / 2;){
+for (j = i; j <= size / 2;)
+{
 k = j * 2;
 if (k < size && array[k - 1] < array[k])
 k++;
