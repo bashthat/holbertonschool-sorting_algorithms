@@ -38,7 +38,4 @@ void heap_sort(int *array, size_t size);
 void exchange(int *x, int *y);
 void sort(int *a, int b);
 void heapify(int *a, size_t b, size_t c);
-
-
-
 #endif
