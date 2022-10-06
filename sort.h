@@ -43,5 +43,6 @@ void heapify(int *a, size_t b, size_t c);
 
 /* Radix Functions */
 void radix_sort(int *array, size_t size);
+void array(int *array, size_t size, int exp);
 
 #endif /* MAIN_H */
