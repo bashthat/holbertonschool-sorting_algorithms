@@ -30,12 +30,18 @@ struct listint_s *next;
 /* Print Functions from holberton*/
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
+
 /* Task Functions */
 void merge_sort(int *array, size_t size);
 void merge(int *array, int *left, int *right, size_t size);
+
 /* heap sort functions */
 void heap_sort(int *array, size_t size);
 void exchange(int *x, int *y);
 void sort(int *a, int b);
 void heapify(int *a, size_t b, size_t c);
-#endif
+
+/* Radix Functions */
+void radix_sort(int *array, size_t size);
+
+#endif /* MAIN_H */
